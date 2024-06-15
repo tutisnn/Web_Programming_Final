@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+<header>
+    <%- include('sayfalar/header'); %>
+</header>
+
+
+<br>
+
+<div class="table">
+
+
+    <form action="/Filtrele" method="get">
+       Deyim Adı Filtresi:<input type="text" name="kosulDegeri" style="border-radius: 5px;">
+    <br>
+    <input type="submit" value="Filtrele" class="btn2">
+</form>
+<br> 
+    <table border="1">
+      <tr>
+        <th>S.N</th>
+        <th>Deyim ID</th>
+        <th>Deyim Adı</th>
+        <th>Deyim Açıklama</th>
+      </tr>
+      <% if (deyimData.length !== 0) { %>
+        <% deyimData.forEach(function(data, index) { %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= data.deyim_id %></td>
+            <td><%= data.deyim_adi %></td>
+            <td><%= data.deyim_aciklama %></td>
+          </tr>
+        <% }); %>
+      <% } else { %>
+        <tr>
+          <td colspan="4">Veri Bulunamadı.</td>
+        </tr>
+      <% } %>
+    </table>
+  </div>
+  
+</body>
+</html>
